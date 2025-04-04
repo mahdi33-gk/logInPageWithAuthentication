@@ -1,12 +1,36 @@
-# React + Vite
+# React Router Firebase Authentication with Tailwind CSS and DaisyUI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React project using **React Router**, **Firebase Authentication**, **Tailwind CSS**, and **DaisyUI** for the UI components. It includes login functionality via **GitHub** and **Google** authentication through Firebase.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Firebase Authentication with **Google** and **GitHub** login options
+- Responsive UI built with **Tailwind CSS** and **DaisyUI**
+- React Router for seamless navigation
+- Firebase as the backend for authentication
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:**
+  - React
+  - React Router
+  - Tailwind CSS
+  - DaisyUI
+- **Backend:**
+  - Firebase Authentication (GitHub and Google login)
+
+## Prerequisites
+
+Before running the project, make sure you have the following installed:
+
+- **Node.js** (LTS version recommended)
+- **npm** or **yarn**
+- **Firebase project** set up for authentication
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/mahdi33-gk/logInPageWithAuthentication
+cd logInPageWithAuthentication
