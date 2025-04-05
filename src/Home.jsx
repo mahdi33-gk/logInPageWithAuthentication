@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./index.css";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import auth from "./firebase.init";
 
 const Home = () => {
   const provider = new GoogleAuthProvider();
+  const gitProvider = new GithubAuthProvider();
   const [user,setUser] =useState(null);
   const googleLogin = () => {
     signInWithPopup(auth,provider )
@@ -15,10 +16,36 @@ const Home = () => {
       setUser(null)
     })
   }
+  const gitLogin = () => {
+    signInWithPopup(auth,gitProvider)
+    .then((result)=>{
+      setUser(result.user)
+    })
+    .catch(err=> {
+      setUser(null)
+    })
+  }
+  const hanndlesignout = () => {
+    signOut(auth)
+    .then(()=>{
+      setUser(null)
+    })
+    .catch(()=>{
+      setUser(null)
+    })
+  }
   return (
     <div className="mt-8">
-      <div className="flex gap-5 flex-col justify-center">
-        <button onClick={googleLogin} className="btn bg-white text-black border-[#e5e5e5]">
+      <div >
+        {
+          user&& <div>
+            <h1>Name: {user.displayName}</h1>
+            <p>Email: {user.email}</p>
+            <img src={user.photoURL} alt="profile photo" width="100" height="100" />
+          </div>
+        }
+        {
+          user? <button onClick={hanndlesignout} className="btn">Sign Out</button>:<div className="flex gap-5 flex-col justify-center"><button onClick={googleLogin} className="btn bg-white text-black border-[#e5e5e5]">
           <svg
             aria-label="Google logo"
             width="16"
@@ -48,7 +75,7 @@ const Home = () => {
           </svg>
           Login with Google
         </button>
-        <button className="btn bg-black text-white border-black">
+        <button onClick={gitLogin} className="btn bg-black text-white border-black">
           <svg
             aria-label="GitHub logo"
             width="16"
@@ -62,7 +89,8 @@ const Home = () => {
             ></path>
           </svg>
           Login with GitHub
-        </button>
+        </button></div>
+        }
       </div>
 
       {/* Google */}
