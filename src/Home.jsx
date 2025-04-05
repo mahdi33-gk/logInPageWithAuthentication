@@ -1,7 +1,10 @@
 import React from "react";
 import "./index.css";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Home = () => {
+  const provider = new GoogleAuthProvider();
+  
   return (
     <div className="mt-8">
       <div className="flex gap-5 flex-col justify-center">
