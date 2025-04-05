@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import auth from "./firebase.init";
 
 const Home = () => {
   const provider = new GoogleAuthProvider();
-  
+  const [user,setUser] =useState(null);
+  const googleLogin = () => {
+    signInWithPopup(auth,provider )
+    .then((result)=>{
+      setUser(result.user)
+    })
+    .catch(err=>{
+      setUser(null)
+    })
+  }
   return (
     <div className="mt-8">
       <div className="flex gap-5 flex-col justify-center">
-        <button className="btn bg-white text-black border-[#e5e5e5]">
+        <button onClick={googleLogin} className="btn bg-white text-black border-[#e5e5e5]">
           <svg
             aria-label="Google logo"
             width="16"
